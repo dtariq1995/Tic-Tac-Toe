@@ -16,8 +16,7 @@ body {
 header {
     display: flex;
     font-size: 52px;
-    font-style: bold;
-    font-weight: 900;
+    font-weight: 600;
     background-color: rgb(58, 67, 77);
     color: beige;
     align-items: center;
@@ -39,7 +38,7 @@ footer p {
 }
 
 footer a {
-    color: rgb(255, 255, 255);
+    color: beige;
     text-decoration: none;
 }
 
@@ -52,7 +51,7 @@ footer a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center; 
-    height: 70%;
+    height: 100%;
 }
 
 #gameboard-grid {
@@ -62,9 +61,16 @@ footer a:hover {
     width: 525px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    gap: 10px;
+    gap: 20px;
+
 }
 
 .grid-square {
     background-color: rgb(58, 67, 77);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 198, 93);
+    font-size: 72px;
+    padding: 0;
 }
