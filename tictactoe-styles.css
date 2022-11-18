@@ -19,7 +19,7 @@ header {
     font-style: bold;
     font-weight: 900;
     background-color: rgb(58, 67, 77);
-    color: white;
+    color: beige;
     align-items: center;
     justify-content: center;
     padding-top: 20px;
@@ -35,7 +35,7 @@ footer {
 }
 
 footer p {
-    color: white;
+    color: beige;
 }
 
 footer a {
@@ -53,5 +53,18 @@ footer a:hover {
     align-items: center;
     justify-content: center; 
     height: 70%;
+}
 
+#gameboard-grid {
+    background-color: beige;
+    display: grid;
+    height: 525px;
+    width: 525px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.grid-square {
+    background-color: rgb(58, 67, 77);
 }
