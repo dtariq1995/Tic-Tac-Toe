@@ -8,5 +8,12 @@ const player = (name) => {   // this is a factory function used to create player
 
 const Gameboard = (function() {
 
+    let gameboard = ["X", "O", "X", "O", "X", "O", "X", "O", "X"];
+
+})();
+
+
+const DisplayController = (function() {
+
 
 })();

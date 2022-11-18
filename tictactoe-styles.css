@@ -1,3 +1,57 @@
+@font-face {
+    font-family: Oswald;
+    src: url(./Assets/Oswald-Font/Oswald-VariableFont_wght.ttf);
+}
+
 body {
-    background-color: slategray;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(58, 67, 77);
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Oswald;
+}
+
+header {
+    display: flex;
+    font-size: 52px;
+    font-style: bold;
+    font-weight: 900;
+    background-color: rgb(58, 67, 77);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    letter-spacing: 5px;
+    }
+
+footer {
+    background-color: rgb(58, 67, 77);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+
+footer p {
+    color: white;
+}
+
+footer a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: rgb(255, 174, 0);
+}
+
+#gameboard-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    height: 70%;
+
 }
