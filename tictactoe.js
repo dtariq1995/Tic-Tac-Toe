@@ -8,15 +8,21 @@ const player = (name) => {   // this is a factory function used to create player
 
 const Gameboard = (function() {
 
-    let gameboard = ["X", "O", "X", "O", "X", "O", "X", "O", "X"];
+    let gameboard = ["Ｘ", "Ｏ", "Ｘ", "Ｏ", "Ｘ", "Ｏ", "Ｘ", "Ｏ", "Ｘ"];  // array that stores users choices
 
-    return {
-        gameboard
-    };
+
+    function chooseSquare() {
+
+        Gameboard.gameboard[1] = "Ｘ";
+        console.log(Gameboard.gameboard);
+    }
+
+
+    return { gameboard, chooseSquare };
 })();
 
 
-const DisplayController = (function() {
+const DisplayController = (function() {  // displays gameboard array 
 
     let tl = document.getElementById("top-left");
     tl.textContent = Gameboard.gameboard[0];
@@ -44,4 +50,7 @@ const DisplayController = (function() {
 
     let br = document.getElementById("bottom-right");
     br.textContent = Gameboard.gameboard[8];
+
+    return { tl, tc, tr, ml, mc, mr, bl, bc, br };
+
 })();
