@@ -96,3 +96,14 @@ input:focus {
     border-color: rgb(255, 198, 93);
     outline: 0 rgb(255, 198, 93);
 }
+
+#winner-area {
+    display: flex;
+    color: rgb(255, 198, 93);
+    font-weight: 600;
+    font-size: 56px;
+    letter-spacing: 3px;
+    height: 190px;
+    align-items: flex-end;
+    font-style: italic;
+}

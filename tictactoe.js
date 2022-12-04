@@ -2,24 +2,30 @@
 
 const Gameboard = (function() {
 
-    const playerFactory = (name, mark, turn) => {   // this is a factory function used to create player objects
+    const playerFactory = (name, mark) => {   // this is a factory function used to create player objects
         
-        return { name, mark, turn };
+        return { name, mark };
     };
 
-    const playerOne = playerFactory('Player 1', 'Ｘ', true);
-    const playerTwo = playerFactory('Player 2', 'Ｏ', false);
+    const playerOne = playerFactory('Player 1', 'Ｘ');
+    const playerTwo = playerFactory('Player 2', 'Ｏ');
 
-    const winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+    const winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];   // winning combos corresponding positions in array
 
     let turn = 1;   // used to tell which users turn it is
 
     let gameboard = ["", "", "", "", "", "", "", "", ""];  // array that stores users choices
 
+    let winner = false;   // when winner is true, the game stops
+
 
     function chooseSquare(square_id) {   // allows player to choose a square and stores choice in array
 
         let square = document.getElementById(square_id);
+
+        if (winner == true) {   // disable ability to choose squares if someone already won
+            return;
+        }
 
         if (square.textContent == "") {   // player can only choose space that hasn't yet been chosen
 
@@ -34,37 +40,45 @@ const Gameboard = (function() {
             }
 
             console.log(gameboard);
-            checkWin();
+            checkWin();   // check for a winner after every turn
         }
     }
 
-    function checkWin() {
+    function checkWin() {   // checks if there's a win or a tie
 
-        turn++;
+        turn++;   // next player's turn
 
-        for (let i = 0; i < winningCombos.length; i++) {
+        for (let i = 0; i < winningCombos.length; i++) {   // check array for all possible winning combinations
 
             let winningArray = winningCombos[i].map(x => gameboard[x]);
 
-            if (winningArray.every(x=> x != "")) {
+            if (winningArray.every(x=> x != "")) {   // if not all empty spaces
 
-                if (winningArray.every(x => x == playerOne.mark)) {
-                    return console.log("Player One Wins!");
+                if (winningArray.every(x => x == playerOne.mark)) {   // if 3 x's in a row, X wins
+                    DisplayController.displayWinner(playerOne);
+                    return winner = true;
                 }
-                else if (winningArray.every(x => x == playerTwo.mark)) {
-                    return console.log("Player Two Wins!");
+                else if (winningArray.every(x => x == playerTwo.mark)) {   // if 3 o's in a row, O wins
+                    console.log(winningCombos[i]);
+                    DisplayController.displayWinner(playerTwo);
+                    return winner = true;
                 }
-                else if (gameboard.indexOf("") == -1) {
+                else if (gameboard.indexOf("") == -1) {   // no spaces left and no winner is a tie
                     return DisplayController.displayWinner("Tie");
                 }
             }
-
-
-
         }
     }
 
-    return { gameboard, playerOne, playerTwo, winningCombos, chooseSquare, checkWin };
+    function resetBoard() {
+
+        gameboard = ["", "", "", "", "", "", "", "", ""]; 
+        turn = 1;
+        winner = false;
+
+    }
+
+    return { gameboard, playerOne, playerTwo, winningCombos, chooseSquare, checkWin, resetBoard };
 })();
 
 
