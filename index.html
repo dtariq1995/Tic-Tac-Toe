@@ -14,12 +14,12 @@
 
         <div class="player-heading">
             <div>PLAYER ONE</div>
-            <input class="player-input" type="text" id="Name" name="Name" maxlength="16">
+            <input id="p1name" class="player-input" type="text" name="Name" maxlength="16" placeholder="Enter a name..." onfocusout="Gameboard.getName()">
         </div>
 
         <div class="player-heading">
             <div>PLAYER TWO</div>
-            <input class="player-input" type="text" id="Name" name="Name" maxlength="16">
+            <input id="p2name" class="player-input" type="text" name="Name" maxlength="16" placeholder="Enter a name..." onfocusout="Gameboard.getName()">
         </div>
 
     </header>
@@ -38,6 +38,7 @@
             <div onclick="Gameboard.chooseSquare(this.id)" id="8" class="grid-square"></div>
         </container>
 
+        <button id="reset"><img src="./Assets/reset.png" height="50px" onclick="Gameboard.resetBoard()"></button>
         <div id="winner-area"></div>
 
     </container>

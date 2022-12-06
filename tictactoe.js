@@ -39,10 +39,28 @@ const Gameboard = (function() {
                 gameboard[square_id] = playerOne.mark;
             }
 
-            console.log(gameboard);
             checkWin();   // check for a winner after every turn
         }
     }
+
+
+    function getName() {   // get players entered names or use default if no names entered
+
+
+        let playerOneName = document.getElementById("p1name");
+        let playerTwoName = document.getElementById("p2name");
+
+        playerOne.name = playerOneName.value;
+        playerTwo.name = playerTwoName.value;
+
+        if (playerOne.name == "") {
+            playerOne.name = "Player 1";
+        }
+        if (playerTwo.name == "") {
+            playerTwo.name = "Player 2";
+        }
+    }
+
 
     function checkWin() {   // checks if there's a win or a tie
 
@@ -70,21 +88,33 @@ const Gameboard = (function() {
         }
     }
 
-    function resetBoard() {
+
+    function resetBoard() {  // resets the board and starts game over
 
         gameboard = ["", "", "", "", "", "", "", "", ""]; 
         turn = 1;
         winner = false;
 
+        let squares = document.querySelectorAll('.grid-square');   // remove users choices from grid
+        squares.forEach(square => {
+            square.textContent = "";
+        });
+
+        let winnerArea = document.getElementById("winner-area");   // reset display text
+        winnerArea.textContent = "";
+        
     }
 
-    return { gameboard, playerOne, playerTwo, winningCombos, chooseSquare, checkWin, resetBoard };
+    return { gameboard, playerOne, playerTwo, winningCombos, chooseSquare, checkWin, resetBoard, getName };
 })();
+
+
+
 
 
 const DisplayController = (function() {  // controls display
 
-    function displayWinner(winner) {
+    function displayWinner(winner) {   // displays winner or if it's a tie
 
         let winnerArea = document.getElementById("winner-area");
 
@@ -96,10 +126,6 @@ const DisplayController = (function() {  // controls display
             winnerArea.textContent = winner.name + " is the winner!";
         }
     }
-
-
-    
-
     return { displayWinner };
 
 })();
